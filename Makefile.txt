@@ -1,0 +1,15 @@
+CC = g++
+CFLAGS = -Wall -std=c++11
+LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system -lX11 -pthread
+EXECUTABLE = a.out
+
+SOURCES = $(wildcard *.cpp)
+OBJECTS = $(SOURCES:.cpp=.o)
+
+all: $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(LDFLAGS)
+
+clean:
+	rm -rf $(OBJECTS) $(EXECUTABLE)
